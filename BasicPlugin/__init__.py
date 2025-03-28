@@ -1,5 +1,3 @@
-
-
 from .main import BasicProcessingTool
 
 from qgis.PyQt.QtGui import QIcon
@@ -10,8 +8,11 @@ from .main import BasicProcessingTool
 
 from .resources import *
 
+
 def classFactory(iface):
     return GeoProcessingPlugin(iface)
+
+
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 from qgis.PyQt.QtWidgets import QAction, QToolBar
@@ -23,8 +24,10 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QToolBar
 from .provider import CustomProcessingProvider  # Import the provider class
 
+
 def classFactory(iface):
     return GeoProcessingPlugin(iface)
+
 
 class GeoProcessingPlugin:
     def __init__(self, iface):
@@ -39,7 +42,11 @@ class GeoProcessingPlugin:
         self.iface.addToolBar(self.toolbar)
 
         # Create an action for your tool
-        self.action = QAction(QIcon(":/BasicPlugin/icon.png"), "Basic Processing Tool", self.iface.mainWindow())
+        self.action = QAction(
+            QIcon(":/BasicPlugin/icon.png"),
+            "Basic Processing Tool",
+            self.iface.mainWindow(),
+        )
         self.action.triggered.connect(self.run)
 
         # Add the action to the custom toolbar
@@ -63,5 +70,6 @@ class GeoProcessingPlugin:
     def run(self):
         # Open the processing tool dialog
         from .main import BasicProcessingTool  # Import your algorithm class
+
         tool = BasicProcessingTool()
         self.iface.openProcessingToolDialog(tool.createInstance().id())
