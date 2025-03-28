@@ -1,0 +1,9 @@
+[general]
+name=Basic Plugin
+description=Basic geoprocessing tool for QGIS
+version=1.0
+qgisMinimumVersion=3.0
+qgisMaximumVersion=3.99
+author=Swiss Geological Survey
+email=geocover@swisstopo.ch
+icon=icon.png
